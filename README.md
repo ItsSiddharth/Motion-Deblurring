@@ -9,6 +9,32 @@ This repo is the working git repository. It includes the codes and the `gen_AI_l
 - The methods used with freezing 10 and 4 layers separately are done to mitigate intrinsic bias as much as possible.
 - We try to prioritise information retention while trying to adapt to new domain(Deblurred Images)
 
+##### Reproducibility
+Every python script and notebook starts by setting all the possible seeds we might be using in the script which allows for seemless reproducibility.
+```python
+# Code block generated with Gemini; prompt "All seeds needed for reproducibility in pytorch based DL project"
+
+import os
+import random
+import numpy as np
+import torch
+
+def set_all_seeds(seed_value=42):
+    os.environ['PYTHONHASHSEED'] = str(seed_value)
+    random.seed(seed_value)
+    np.random.seed(seed_value)
+    
+    torch.manual_seed(seed_value)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed_value)
+        torch.cuda.manual_seed_all(seed_value)
+        torch.backends.cudnn.enabled = True
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+
+set_all_seeds(42)
+```
+
 
 ## Task-2
 The notebooks `Deblurring_Analysis_go_pro.ipynb` and `Deblurring_Analysis_coco.ipynb` contain all the code for the deblurring analysis and score comparisons. We calculate a `blur_score` using ratio of high frequencies to low frequencies. We also compare PSNR, SSIM, Blur Score Improvement post deblurring. We have created 3 buckets of images based off of the blur intensities. They are "low", "medium" and "high" blur image buckets.
