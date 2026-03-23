@@ -1,0 +1,89 @@
+commit 55f68e54793ad9c6244590bb9309b39fca83cef7
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Mon Mar 23 13:37:36 2026 +1030
+
+    Update README.md
+
+commit 5052c94c7a6f15a1cb0d8f525843dd6430f00549
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Mon Mar 23 13:35:44 2026 +1030
+
+    Code Cleanup and Refactor
+
+commit 1a7da91bb30183e1874c2178d71c069b4c05bf76
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Mon Mar 23 13:24:37 2026 +1030
+
+    Add README.md, Training and Inference Logs
+
+commit 1aa75fb60a631f84eeb93cf3ce3b31115d0ca9fd
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Mon Mar 23 12:08:54 2026 +1030
+
+    Add gen AI logs
+
+commit 73dbf9159800ecfdce192752a93da5f491fd53d2
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Mon Mar 23 11:58:55 2026 +1030
+
+    Code Refactor to Modular
+
+commit 221c5715a4ecca7919668a975b203988f7751395
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Sun Mar 22 18:11:51 2026 +1030
+
+    Code refactor and cleanup
+
+commit b6350d92c6733ca5bdf00d5f3e534feab389df5f
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Sun Mar 22 18:08:19 2026 +1030
+
+    Add YOLOv8 inference, benchmark and train code
+
+commit f9ff4adf39d731330df6edb19d469c68bc3e62e3
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Sun Mar 15 18:03:50 2026 +1030
+
+    Add code for Task3, DETR Analysis
+
+commit df0ab93f3aca92c6447e71a638b906389b23c49a
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Sat Mar 7 12:22:03 2026 +1030
+
+    Codebase Cleanup, Separate DETR file
+
+commit f373b2d01b8cddba354df669cd4122a25f0c7231
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Mon Mar 2 12:50:39 2026 +1030
+
+    Add logic for DETR inference
+
+commit 95f7bd4cd3166ea416979b39009db37689e71b8a
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Fri Feb 27 12:30:54 2026 +1030
+
+    Add logic for PSNR and SSIM
+
+commit 2fa46863a129c209a7e92e78c7fb422266717cdb
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Thu Feb 26 17:49:27 2026 +1030
+
+    Compare all de-blur logics
+
+commit f96d3db13a7fa10d85262c0cb7de7748aaf3d3da
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Wed Feb 25 16:45:48 2026 +1030
+
+    Add logic for Blur score
+
+commit ba2d4a010606f70c81cc5ce91c4ac05f5c966d53
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Wed Feb 25 14:19:54 2026 +1030
+
+    Add code for Data Exploration, Add LICENSE
+
+commit c85b4f9280a766fe023f34c292d3407caaa5734e
+Author: ItsSiddharth <siddharth.menon1@gmail.com>
+Date:   Wed Feb 25 13:32:12 2026 +1030
+
+    Initial commit
