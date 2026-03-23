@@ -21,7 +21,24 @@ def set_all_seeds(seed_value=42):
 set_all_seeds(42)
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2. i wanna use the K constant in the weiner thing to make sure i handle the division by zero error. is there a way to use the library and still use K
 
+def safe_wiener_color(image_path, window_size=5, noise_constant=0.01):
+    img = cv2.imread(image_path)
+    if img is None: return None
+    
+    ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    y, cr, cb = cv2.split(ycrcb)
+    
+    y_float = y.astype(np.float64) / 255.0
+    
+    y_restored = wiener(y_float, mysize=window_size, noise=noise_constant)
+    
+    y_restored = np.nan_to_num(y_restored)
+    y_final = (np.clip(y_restored, 0, 1) * 255).astype(np.uint8)
+    
+    merged = cv2.merge([y_final, cr, cb])
+    return cv2.cvtColor(merged, cv2.COLOR_YCrCb2BGR)
 
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

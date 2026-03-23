@@ -6,11 +6,22 @@ from tqdm import tqdm
 from skimage.metrics import structural_similarity as ssim
 from scipy.signal import wiener
 
-def apply_wiener(image_path, mysize=None, noise=None):
-    img = cv2.imread(image_path, 0)
-    img_float = img.astype(np.float64) / 255.0
-    restored = wiener(img_float, mysize=mysize, noise=noise)
-    return (np.clip(restored, 0, 1) * 255).astype(np.uint8)
+def safe_wiener_color(image_path, window_size=5, noise_constant=0.01):
+    img = cv2.imread(image_path)
+    if img is None: return None
+    
+    ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    y, cr, cb = cv2.split(ycrcb)
+    
+    y_float = y.astype(np.float64) / 255.0
+    
+    y_restored = wiener(y_float, mysize=window_size, noise=noise_constant)
+    
+    y_restored = np.nan_to_num(y_restored)
+    y_final = (np.clip(y_restored, 0, 1) * 255).astype(np.uint8)
+    
+    merged = cv2.merge([y_final, cr, cb])
+    return cv2.cvtColor(merged, cv2.COLOR_YCrCb2BGR)
 
 def setup_stratified_dataset(blur_dir, sharp_dir, label_dir, output_root):
     domains = ['sharp', 'blur', 'deblur']
@@ -66,14 +77,14 @@ def setup_stratified_dataset(blur_dir, sharp_dir, label_dir, output_root):
         for split, items in split_map.items():
             for item in items:
                 fname = item['file']
-                
+                 
                 shutil.copy(os.path.join(sharp_dir, fname), os.path.join(output_root, 'sharp', split, 'images', fname))
                 shutil.copy(item['label'], os.path.join(output_root, 'sharp', split, 'labels', fname.replace('.jpg','.txt').replace('.png','.txt')))
 
                 shutil.copy(os.path.join(blur_dir, fname), os.path.join(output_root, 'blur', split, 'images', fname))
                 shutil.copy(item['label'], os.path.join(output_root, 'blur', split, 'labels', fname.replace('.jpg','.txt').replace('.png','.txt')))
 
-                deblurred_img = apply_wiener(os.path.join(blur_dir, fname), mysize=5, noise=0.01)
+                deblurred_img = safe_wiener_color(os.path.join(blur_dir, fname))
                 cv2.imwrite(os.path.join(output_root, 'deblur', split, 'images', fname), deblurred_img)
                 shutil.copy(item['label'], os.path.join(output_root, 'deblur', split, 'labels', fname.replace('.jpg','.txt').replace('.png','.txt')))
 

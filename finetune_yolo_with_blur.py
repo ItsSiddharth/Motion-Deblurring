@@ -7,9 +7,9 @@ results = model.train(
     epochs=25,
     imgsz=640,
     batch=16,
-    freeze=10,
+    freeze=4,
     lr0=0.001,
     project='finetuning_deblur_stratified_data',
-    name='yolov8m_frozen10_backbone',
+    name='yolov8m_frozen4_backbone',
     device=0 
 )
