@@ -1,3 +1,5 @@
+"""This code is generated with AI logs attached in the gen_AI_logs.txt"""
+
 import os
 import cv2
 import shutil

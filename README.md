@@ -1,2 +1,4 @@
 # Motion-Deblurring
-Assignment for COMP6001
+`Assignment-1 for COMP6001`
+
+### Task-1
