@@ -5,4 +5,3 @@ coco_converted/*
 yolo26n.pt
 yolov8m.pt
 runs/*
-stat_output_logs/*
